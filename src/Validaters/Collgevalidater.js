@@ -50,6 +50,11 @@ const isValidLogoLink = function (logoLink) {
         if (whitespace(logoLink)) {
             return "Make sure logoLink should not have any space !" 
         }
+        let isURL = logoLink.match(/^https?[^\?]*.(jpg|jpeg|gif|png|tiff|bmp)(\?(.*))?$/gmi) != null
+
+        if (isURL == false) {
+            return "please enter valid logoLink"
+        }
     }
     catch (error) {
         return error.message

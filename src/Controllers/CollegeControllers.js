@@ -67,7 +67,7 @@ const getCollege = async function (req, res) {
     if (Interns.length == 0) {
       Interns = "Interns are not available in this college !"
     }
-
+   
     let obj = {
       name: college.name,
       fullName: college.fullName,

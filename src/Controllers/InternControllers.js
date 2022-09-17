@@ -31,11 +31,11 @@ const createIntern = async function (req, res) {
     }
     let checkemail = await InternModel.findOne({ email: data.email, isDeleted: false })
     if (checkemail) {
-      return res.status(400).send({ status: false, message: "email already exists." })
+      return res.status(409).send({ status: false, message: "email already exists." })
     }
     let checkmobile = await InternModel.findOne({ mobile: data.mobile, isDeleted: false })
     if (checkmobile) {
-      return res.status(400).send({ status: false, message: "mobile number already exists." })
+      return res.status(409).send({ status: false, message: "mobile number already exists." })
     }
     
     let collegeName = data.collegeName
