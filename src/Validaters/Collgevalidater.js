@@ -4,7 +4,8 @@ function whitespace(str) {
 function stringContainsNumber(_string) {
     return /\d/.test(_string);
 }
-const isValidName = function (name) {
+
+const isValidName = function (name) {  
     try {
         if (!name) {
             return "college name is required!."
@@ -50,17 +51,19 @@ const isValidLogoLink = function (logoLink) {
         if (whitespace(logoLink)) {
             return "Make sure logoLink should not have any space !" 
         }
-        let isURL = logoLink.match(/^https?[^\?]*.(jpg|jpeg|gif|png|tiff|bmp)(\?(.*))?$/gmi) != null
-
-        if (isURL == false) {
-            return "please enter valid logoLink"
-        }
+       
     }
     catch (error) {
         return error.message
     }
+
+}
+
+const validLogoLink = function(name){
+  if(name.match(/(http[s]:\/\/)([a-z\-0-9\/.]+)\.([a-z.]{2,3})\/([a-z0-9\-\/._~:?#\[\]@!$&'()+,;=%]*)([a-z0-9]+\.)(jpg|jpeg|png)/i))
+  return true
+  return false
 }
 
 
-
-module.exports = { isValidName, isValidfullName, isValidLogoLink }
+module.exports = { isValidName, isValidfullName ,isValidLogoLink ,validLogoLink}
