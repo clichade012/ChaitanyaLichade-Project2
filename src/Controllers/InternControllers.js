@@ -40,14 +40,17 @@ const createIntern = async function (req, res) {
     if (checkmobile) {
       return res.status(409).send({ status: false, message: "mobile number already exists." })
     }
-    
+    let college=await CollegeModel.findOne({name:data.collegeName,isDeleted:false})
+    if(!college){
+      return res.status(400).send({status:false,message:"Not found college !"})
+    }
    
     let createdata = await InternModel.create(data)
     let obj={
       name : createdata.name,
       email : createdata.email,
       mobile: createdata.mobile,
-      collegeId: createdata.collegeId,
+      collegeId: college._id,
       isDeleted:createdata.isDeleted
     }
     return res.status(201).send({ status: true, data: obj })
