@@ -14,7 +14,7 @@ mongoose.connect("mongodb+srv://raj_3028:kWaM507ps0Icsdg0@cluster0.pw23ckf.mongo
 
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+
 
 
 //===================== Global Middleware =====================//
@@ -30,13 +30,9 @@ app.use(
 )
 app.use('/', route);
 
-app.use(function(req,res){
-  var err = new Error('Not Found.') 
-  err.status = 400
-  return res.status(400).send("Path not Found.")
-})
-app.listen(process.env.PORT || 3000, function () {
-    console.log('Express app running on port ' + (process.env.PORT || 3000))
+
+app.listen( 3001, function () {
+    console.log('Express app running on port ' + (3001))
 });
 
 

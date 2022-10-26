@@ -8,6 +8,8 @@ const Validlogo = require('../Validaters/Collgevalidater')
 //=====================This function is used for Creating College Doucment=====================//
 const createCollege = async function (req, res) {
   try {
+   //  res.header('Access-Control-Allow-Origin','*')
+
     let data = req.body
     let { logoLink}=data
     if (Object.keys(data).length == 0) {
@@ -32,7 +34,7 @@ const createCollege = async function (req, res) {
 
     let checkName = await CollegeModel.findOne({ name: data.name, isDeleted: false })
     if (checkName) {
-      return res.status(400).send({ status: false, message: "college name already exists." })
+      return res.status(409).send({ status: false, message: "college name already exists." })
     }
    
     let createdata = await CollegeModel.create(data)
@@ -48,6 +50,9 @@ const createCollege = async function (req, res) {
 //=====================This function used for Fetching a college document=====================//
 const getCollege = async function (req, res) {
   try {
+
+  
+
     let data = req.query
     let collegeName = data.collegeName
 
@@ -60,7 +65,7 @@ const getCollege = async function (req, res) {
       var id = college._id
     }
 
-    if (college == null) return res.status(400).send({ status: false, message: "No College Found" })
+    if ( college == null) return res.status(400).send({ status: false, message: "No College Found" })
 
     //===================== Fetching collegeId from DB =====================//
     let Interns = await InternModel.find({ collegeId: id, isDeleted: false }).select({ name: 1, email: 1, mobile: 1 })
