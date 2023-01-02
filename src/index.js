@@ -4,6 +4,7 @@ const route = require('./routes/route')
 const app = express();
 const { default: mongoose } = require('mongoose');
 const moment = require('moment');
+
 mongoose.connect("mongodb+srv://raj_3028:kWaM507ps0Icsdg0@cluster0.pw23ckf.mongodb.net/Project23", {
     useNewUrlParser: true
 })
@@ -31,6 +32,8 @@ app.use(
 
 
 app.use('/', route);
+
+
 app.listen( 3000, function () {
     console.log('Express app running on port ' + ( 3000))
 });

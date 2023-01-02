@@ -7,7 +7,7 @@ const isValid = require('../Validaters/Internsvalidater')
 const createIntern = async function (req, res) {
   try {
 
-   //   res.header('Access-Control-Allow-Origin','*')
+   
 
     let data = req.body
     if (Object.keys(data).length == 0) {

@@ -6,7 +6,7 @@ function stringContainsNumber(_string) {
     return /\d/.test(_string);
 }
 function isEmail(emailAdress) {
-    let regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    let regex = /^[a-z0-9_]{3,}@[a-z]{3,}[.]{1}[a-z]{3,6}$/;
     // w use for char * use for breakpoint $ for end
     return regex.test(emailAdress)
         

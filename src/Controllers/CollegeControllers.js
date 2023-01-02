@@ -8,7 +8,7 @@ const Validlogo = require('../Validaters/Collgevalidater')
 //=====================This function is used for Creating College Doucment=====================//
 const createCollege = async function (req, res) {
   try {
-   //  res.header('Access-Control-Allow-Origin','*')
+
 
     let data = req.body
     let { logoLink}=data
